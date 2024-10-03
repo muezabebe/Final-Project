@@ -2,6 +2,7 @@ import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import {pages} from './pages/page'
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 const App = () => {
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
@@ -16,8 +17,8 @@ const App = () => {
         <Route path ='/login' element ={<pages.Login/>}/>
         <Route path ='/placeorder' element ={<pages.PlaceOrder/>}/>
         <Route path ='/orders' element ={<pages.Orders/>}/>
-
       </Routes>
+      <Footer/>
     </div>
   )
 }
