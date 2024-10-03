@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from '../assets/assets';
 import { Link, NavLink } from 'react-router-dom';
-import { RiSearchLine, RiAccountCircleLine, RiShoppingCart2Line, RiMenu5Fill, RiDropdownList } from "react-icons/ri";
+import { RiSearchLine, RiAccountCircleLine, RiShoppingCart2Line, 
+  RiMenu5Fill, RiDropdownList } from "react-icons/ri";
+import { ShopContext } from '../context/ShopContext';
 
 const NavBar = () => {
   const [visible, setVisible] = useState(false);
+  const {setShowSearch, getCartCount}=useContext(ShopContext)
 
   return (
     <div className='flex items-center justify-between py-5 font-medium relative'>
@@ -36,7 +39,7 @@ const NavBar = () => {
         </li>
       </ul>
       <div className='flex items-center gap-6'>
-        <RiSearchLine />
+        <RiSearchLine className='cursor-pointer' onClick={()=>setShowSearch(true)}/>
         <div className='group relative'>
           <RiAccountCircleLine className='w-5 cursor-pointer' />
           <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
@@ -49,7 +52,7 @@ const NavBar = () => {
         </div>
         <Link to="/cart" className='relative'>
           <RiShoppingCart2Line />
-          <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>10</p>
+          <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</p>
         </Link>
         <RiMenu5Fill onClick={() => setVisible(true)} className='w-5 cursor-pointer sm:hidden' />
       </div>
