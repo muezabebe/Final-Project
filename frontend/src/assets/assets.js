@@ -21,12 +21,14 @@ import image20 from './20.jpg'
 import image21 from './21.jpg'
 import image22 from './22.jpg'
 import ecommerce from './ecommerce.jpg'
+import about from './about.jpg'
+import contact from './contact.jpg'
 
 
 export const assets={
     image1, image2, image3,image4,image5,image6,image7,image8,image9,image10,
     image11,image12,image13,image14,image15,image16,image17,image18,image19,image20,
-    image21,image22, ecommerce,
+    image21,image22, ecommerce, about,contact,
 }
 
 export const products=[
