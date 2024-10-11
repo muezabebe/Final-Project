@@ -6,9 +6,9 @@ import RelatedProducts from '../components/RelatedProducts';
 
 
 const Product = () => {
-  const {productId}=useParams();
-  const {products, currency, addToCart}=useContext(ShopContext);
-  const [productData, setProductData]= useState(false);
+  const {productId}=useParams()
+  const {products, currency, addToCart}=useContext(ShopContext)
+  const [productData, setProductData]= useState(false)
   const [image, setImage]= useState('')
   const [size, setSize]=useState('')
 
@@ -61,7 +61,7 @@ const Product = () => {
             <p>Select size</p>
             <div className='flex gap-2'>
               {
-                productData.size.map((item, index)=>(
+                productData.sizes.map((item, index)=>(
                   <button onClick={()=>setSize(item)} className={`border py-2 px-4 bg-gray-100 ${item===size ? 'border-orange-500' : ''}`} key={index}>{item}</button>
                 ))
               }
@@ -90,7 +90,7 @@ const Product = () => {
       {/*............displayRelated products........ */}
       <RelatedProducts category={productData.category} subcategory={productData.subcategory}/>
     </div>
-  ): <div className='opacity-0'></div>
+  ): <div> <h1> error is here</h1></div>
 }
 
 export default Product
