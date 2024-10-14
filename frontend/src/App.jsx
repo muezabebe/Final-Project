@@ -23,6 +23,7 @@ const App = () => {
         <Route path ='/login' element ={<pages.Login/>}/>
         <Route path ='/placeorder' element ={<pages.PlaceOrder/>}/>
         <Route path ='/orders' element ={<pages.Orders/>}/>
+        <Route path ='/verify' element ={<pages.Verify/>}/>
       </Routes>
       <Footer/>
     </div>

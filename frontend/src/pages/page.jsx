@@ -7,6 +7,7 @@ import Cart from './Cart'
 import Login from './Login'
 import PlaceOrder from './PlaceOrder'
 import Orders from './Orders'
+import Verify from './Verify'
 
 export const pages={Home,Collection, About, Contact, Product, Cart,
-     Login, PlaceOrder, Orders}
+     Login, PlaceOrder, Orders, Verify}

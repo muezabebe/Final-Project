@@ -2,10 +2,9 @@ import React, { useContext, useState } from "react";
 import Title from "../components/Title";
 import CartTotal from "../components/CartTotal";
 import { ShopContext } from "../context/ShopContext";
-import { FaCcStripe } from "react-icons/fa";
-import { SiRazorpay } from "react-icons/si";
 import axios from "axios";
 import { toast } from "react-toastify";
+import {assets} from '../assets/assets'
 
 const Placeorder = () => {
   const [method, setMethod] = useState("cod");
@@ -74,9 +73,16 @@ const Placeorder = () => {
           }else{
             toast.error(response.data.message)
           }
-
           break;
-
+        case "stripe":
+            const responseStripe =await axios.post(backendUrl + '/api/order/stripe',orderData,{headers:{token}})
+            if(responseStripe.data.success){
+              const {session_url}=responseStripe.data
+              window.location.replace(session_url)
+            }else{
+              toast.error(responseStripe.data.message)
+            }
+            break;
         default:
           break;
       }
@@ -203,18 +209,7 @@ const Placeorder = () => {
                   method === "stripe" ? "bg-green-500" : ""
                 }`}
               ></p>
-              <FaCcStripe className="h-5 mx-4" />
-            </div>
-            <div
-              onClick={() => setMethod("razorpay")}
-              className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
-            >
-              <p
-                className={`min-w-3.5 h-3.5 border rounded-full ${
-                  method === "razorpay" ? "bg-green-500" : ""
-                }`}
-              ></p>
-              <SiRazorpay className="h-5 mx-4" />
+              <img className="h-5 mx-4" src={assets.stripe} alt="" />
             </div>
             <div
               onClick={() => setMethod("cod")}
